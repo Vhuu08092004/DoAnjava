@@ -2,13 +2,6 @@ import java.util.Scanner;
 
 public class CauHoi {
 	private String idCau;
-	public String getIdCau() {
-		return idCau;
-	}
-
-	public void setIdCau(String idCau) {
-		this.idCau = idCau;
-	}
 	private String NoiDungCau;
 	private String PhuongAnA;
 	private String PhuongAnB;
@@ -31,6 +24,13 @@ public class CauHoi {
 		DapAn = dapAn;
 	}
 
+	public String getIdCau() {
+		return idCau;
+	}
+	
+	public void setIdCau(String idCau) {
+		this.idCau = idCau;
+	}
 	public String getNoiDungCau() {
 		return NoiDungCau;
 	}
@@ -107,7 +107,5 @@ public class CauHoi {
 		System.out.println("D. " + this.PhuongAnD);
 		System.out.println("Đáp án câu: " + this.DapAn );
 	}
-	
-
 	
 }

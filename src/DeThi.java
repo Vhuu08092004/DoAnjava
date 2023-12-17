@@ -105,6 +105,7 @@ public class DeThi extends HocPhan{
     }
     public void NhapThongTinDeThi(){
         //super.capNhat();
+//    	NhapTenKiThi();
         NhapMaDeThi();
         NhapTenMonThi();
         NhapSoCau();

@@ -12,7 +12,20 @@ public class Thi {
     private String TenKiThi;
     private String NgayBatDau;
     private String NgayKetThuc;
-    public Thi(){};
+    private float diemSo;
+    public DeThi getDeThi() {
+		return deThi;
+	}
+	public void setDeThi(DeThi deThi) {
+		this.deThi = deThi;
+	}
+	public float getDiemSo() {
+		return diemSo;
+	}
+	public void setDiemSo(float diemSo) {
+		this.diemSo = diemSo;
+	}
+	public Thi(){};
     public Thi(String MaKiThi, String TenKiThi, String NgayBatDau, String NgayKetThuc){
         this.MaKiThi = MaKiThi;
         this.TenKiThi = TenKiThi;
@@ -97,6 +110,7 @@ public class Thi {
     }
     public void LamDeThi(){
         int True = 0;
+        this.NhapTenKiThi();
         this.deThi.XuatThongTinDeThi();
         this.deThi.MonThi(this.deThi.getTenMonThi().concat(".txt"));
         this.deThi.NoiDungDeThi();
@@ -135,7 +149,7 @@ public class Thi {
               }
             };
         }
-        float diemSo = ((float)True/number)*10;
+         diemSo = ((float)True/number)*10;
         System.out.println("Diem so bai thi cua ban la:" + diemSo);
         if(diemSo >= 5){
             System.out.println("So cau dung: "+ True);

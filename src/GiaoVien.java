@@ -5,8 +5,14 @@ public class GiaoVien extends Human{
 	private String khoa;
 	
 	public GiaoVien() {
-		
 	}
+	
+	
+	public GiaoVien(GiaoVien other) {
+        super(other);
+        this.id = other.id;
+        this.khoa = other.khoa;
+    }
 
 	public GiaoVien(String id,String khoa, String firstName, String lastName, String gender,
             String dateOfBirth) {
@@ -14,6 +20,7 @@ public class GiaoVien extends Human{
 		this.id = id;
 		this.khoa = khoa;
 	}
+	
 
 	public String getId() {
 		return id;
@@ -21,6 +28,9 @@ public class GiaoVien extends Human{
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getFaculty() {
+		return khoa;
 	}
 
 	public String getKhoa() {

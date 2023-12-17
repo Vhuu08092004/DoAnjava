@@ -246,4 +246,14 @@ public class DanhSachCauHoi implements DuyetDS , File{
 		System.out.println("Câu Hỏi Không Có Trong Danh Sách");
 		return;
 	}
+	
+	public static void main(String[] args) {
+		DanhSachCauHoi dsch = new DanhSachCauHoi();
+		dsch.ghiFile("monhoc.txt");
+	}
+	
+	
+	
+	
+	
 }

@@ -79,7 +79,7 @@ public class StudentList {
     public void searchId(int n) {
     	for(int i = 0 ; i < this.n ; i++) {
     		if(n == i) {
-    			System.out.println("Student " + i   + ":");
+    			System.out.println("Student " + (i + 1)   + ":");
                 Student st = this.StudentArray[i];
                 System.out.println("\tid: " + st.getId());
                 System.out.println("\tFaculty: " + st.getFaculty());
@@ -202,77 +202,76 @@ public class StudentList {
         n--;
         System.out.println("Student: " + position + "was deleted");
     }
-    public void updateId(int id) {
-    	Scanner scanner = new Scanner(System.in);
-    	 int position = -1;
-         for (int i = 0; i < n; i++) {
-             if (Integer.parseInt(StudentArray[i].getId())  == id) {
-                 position = i;
-                 break;
-             }
-         }
-         if (position != -1) {
-             System.out.println("What information do you want to update?");
-             System.out.println("1. id");
-             System.out.println("2. First name");
-             System.out.println("3. Last name");
-             System.out.println("4. Class");
-             System.out.println("5. Gender");
-             System.out.println("6. date of birth");
-             System.out.println("7. faculty");
-             scanner.next();
-             int option = scanner.nextInt();
-
-             switch (option) {
-                 case 1:
-                     System.out.print("Input new id: ");
-                     String newId = scanner.nextLine();
-                     StudentArray[position].setId(newId);
-                     break;
-                 case 2:
-                     System.out.print("Input new first name: ");
-                     String newFirstName = scanner.nextLine();
-                     StudentArray[position].setFirstName(newFirstName);
-                     break;
-                 case 3:
-                     System.out.print("Input new last name: ");
-                     String newLastName = scanner.nextLine();
-                     StudentArray[position].setLastName(newLastName);
-                     break;
-                 case 4:
-                     System.out.print("Input new class: ");
-                     String newClass = scanner.nextLine();
-                     StudentArray[position].setClass(newClass);
-                     break;
-                 case 5:
-                     System.out.print("Input new gender: ");
-                     String newGender = scanner.nextLine();
-                     StudentArray[position].setGender(newGender);
-                     break;
-                 case 6:
-                     System.out.print("Input new date of birth: ");
-                     String newDateOfBirth = scanner.nextLine();
-                     StudentArray[position].setdateOfBirth(newDateOfBirth);
-                     break;
-                 case 7:
-                     System.out.print("Input new faculty: ");
-                     String newFaculty = scanner.nextLine();
-                     StudentArray[position].setFaculty(newFaculty);
-                     break;
-             }
-
-             System.out.println("Student information has been updated successfully.");
-         } 
-    }
+//    public void updateId(int id) {
+//    	Scanner scanner = new Scanner(System.in);
+//    	 int position = -1;
+//         for (int i = 0; i < n; i++) {
+//             if (Integer.parseInt(StudentArray[i].getId())  == id) {
+//                 position = i;
+//                 break;
+//             }
+//         }
+//         if (position != -1) {
+//             System.out.println("What information do you want to update?");
+//             System.out.println("1. id");
+//             System.out.println("2. First name");
+//             System.out.println("3. Last name");
+//             System.out.println("4. Class");
+//             System.out.println("5. Gender");
+//             System.out.println("6. date of birth");
+//             System.out.println("7. faculty");
+//             scanner.next();
+//             int option = scanner.nextInt();
+//
+//             switch (option) {
+//                 case 1:
+//                     System.out.print("Input new id: ");
+//                     String newId = scanner.nextLine();
+//                     StudentArray[position].setId(newId);
+//                     break;
+//                 case 2:
+//                     System.out.print("Input new first name: ");
+//                     String newFirstName = scanner.nextLine();
+//                     StudentArray[position].setFirstName(newFirstName);
+//                     break;
+//                 case 3:
+//                     System.out.print("Input new last name: ");
+//                     String newLastName = scanner.nextLine();
+//                     StudentArray[position].setLastName(newLastName);
+//                     break;
+//                 case 4:
+//                     System.out.print("Input new class: ");
+//                     String newClass = scanner.nextLine();
+//                     StudentArray[position].setClass(newClass);
+//                     break;
+//                 case 5:
+//                     System.out.print("Input new gender: ");
+//                     String newGender = scanner.nextLine();
+//                     StudentArray[position].setGender(newGender);
+//                     break;
+//                 case 6:
+//                     System.out.print("Input new date of birth: ");
+//                     String newDateOfBirth = scanner.nextLine();
+//                     StudentArray[position].setdateOfBirth(newDateOfBirth);
+//                     break;
+//                 case 7:
+//                     System.out.print("Input new faculty: ");
+//                     String newFaculty = scanner.nextLine();
+//                     StudentArray[position].setFaculty(newFaculty);
+//                     break;
+//             }
+//
+//             System.out.println("Student information has been updated successfully.");
+//         } 
+//    }
+//    
     
-    public void updateInfo() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Input Student id which you want to update: ");
-        String id = scanner.nextLine();
-
+    
+    public void updateInfo(int id) {
+    	Scanner scanner = new Scanner(System.in);
         int position = -1;
         for (int i = 0; i < n; i++) {
-            if (StudentArray[i].getId().equals(id)) {
+            if (StudentArray[i].getId().equals(String.valueOf(id))) {
                 position = i;
                 break;
             }
@@ -287,7 +286,7 @@ public class StudentList {
             System.out.println("6. date of birth");
             System.out.println("7. faculty");
 
-            int option = scanner.nextInt();
+            int option = Integer.parseInt(scanner.nextLine());
 
             switch (option) {
                 case 1:
@@ -610,4 +609,10 @@ public class StudentList {
         }
     }
 
+    public static void main(String[] args) {
+    	
+		StudentList st = new StudentList();
+		st.readFile("student-data.txt");
+//		s
+	}
 }

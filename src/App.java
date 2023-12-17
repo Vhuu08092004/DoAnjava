@@ -5,6 +5,7 @@ public class App {
     public static DanhSachCauHoi DSCH = new DanhSachCauHoi();
     public static DanhSachGiaoVien DSGV = new DanhSachGiaoVien();
     public static StudentList DSSV = new StudentList();
+    public static DanhSachKetQua DSKQ = new DanhSachKetQua();
     public static int MatKhau = 12345678;
     public static int id;
     
@@ -65,6 +66,7 @@ do{
     	Thi thi = new Thi();
     	thi.getDetThi().NhapThongTinDeThi();
     	thi.LamDeThi();
+    	DSKQ.WriteFile(thi.getDiemSo(), id, DSSV.getStudentArray()[id].getLastName(), DSSV.getStudentArray()[id].getFaculty(), thi.getTenKiThi());
     	System.out.println("Chuc Mung ban da hoan thanh Bai Thi");
     	Scanner scanner = new Scanner(System.in);
         int option;
@@ -82,14 +84,14 @@ do{
     }
     
     public static void ThongTinSinhVien() {
-    	DSSV.searchId(id);
+    	DSSV.searchId(id - 1);
     	clearScreen();
     	MenuSinhVien();
     }
     
     
     public static void CapNhatThongTinSinhVien() {
-    	DSSV.updateId(id);
+    	DSSV.updateInfo(id);
     	clearScreen();
     	MenuSinhVien();
     }
@@ -428,13 +430,18 @@ do{
     	Scanner scanner = new Scanner(System.in);
         int option;
         while (true) {
+        	clearScreen();
            System.out.println("1.Danh sách học sinh");
            System.out.println("2.Danh sách giảng viên");
            System.out.println("3.Danh sách câu hỏi");
            System.out.println("4.Cập nhật danh sách câu hỏi");
            System.out.println("5.Cập nhật danh sách học sinh");
            System.out.println("6.Cập nhật danh sách giảng viên");
-           System.out.println("7.Đăng xuất");
+           System.out.println("7.Thống kê theo khoa");
+           System.out.println("8.Thống kê theo kì thi");
+           System.out.println("9.Thống kê theo khoản điểm");
+           System.out.println("10.Thống kê giáo viên");
+           System.out.println("11.Đăng xuất");
             option = scanner.nextInt();
            if(option == 1){
         	   System.out.println("Danh sách học sinh");
@@ -462,7 +469,23 @@ do{
         	}
            
        		else if(option == 7){
-            return;
+       			System.out.println("Nhập vào khoa mà bạn muốn thống kê điểm số");
+       			String khoa = scanner.next();
+       			DSKQ.khoaStatistic(khoa);
+       			menuAdmin();
+       		} else if(option == 8) {
+       			System.out.println("Nhập vào kì thi mà bạn muốn thống kê điểm số");
+       			String kithi = scanner.next();
+       			DSKQ.hkStatistic(kithi);
+       			menuAdmin();
+       		} else if(option == 9) {
+       			clearScreen();
+       			DSKQ.ReadFile();
+       			DSKQ.DisplayStatistic();
+       			menuAdmin();
+       		} else if (option == 10) {
+       			DSGV.statistics();
+       			menuAdmin();
        		}
          System.out.println("Khong Hop Le Moi Nhap Lai");
         }
@@ -492,9 +515,7 @@ do{
     	DSGV.docFile("danhsachgiaovien");
     	DSSV.readFile("student-data.txt");
         App app = new App();
-        app.ThongThiTracNghiem();
-        
-        
+        app.ThongThiTracNghiem();    
     }
 
 }
