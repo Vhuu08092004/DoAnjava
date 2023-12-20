@@ -1,4 +1,4 @@
-import java.util.Scanner;
+  import java.util.Scanner;
 
 public class App {
 	private static Scanner scan = new Scanner(System.in);
@@ -8,6 +8,7 @@ public class App {
     public static DanhSachKetQua DSKQ = new DanhSachKetQua();
     public static int MatKhau = 12345678;
     public static int id;
+    public static DanhSachHocPhan dshp = new DanhSachHocPhan();
     
     public static void clearScreen(){
         System.out.println();
@@ -405,9 +406,7 @@ do{
             	  System.out.println("Tìm được giảng viên có tên là "+ x +  " trong danh sách giảng viên");
               } else {
             	  System.out.println("Không tồn tại giảng viên có tên là:" + x);
-              }
-              
-              
+              }                
               upDateGiangVien();
           } else if(option == 5) {
         	  System.out.println("Nhập vào id giãng viên bạn muốn tìm kiếm");
@@ -441,6 +440,7 @@ do{
            System.out.println("8.Thống kê theo kì thi");
            System.out.println("9.Thống kê theo khoản điểm");
            System.out.println("10.Thống kê giáo viên");
+           System.out.println("11.Thêm học phần mới");
            System.out.println("11.Đăng xuất");
             option = scanner.nextInt();
            if(option == 1){
@@ -486,6 +486,9 @@ do{
        		} else if (option == 10) {
        			DSGV.statistics();
        			menuAdmin();
+       		}
+       		else if (option == 11) {
+       			dshp.nhapDS();
        		}
          System.out.println("Khong Hop Le Moi Nhap Lai");
         }

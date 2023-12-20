@@ -141,6 +141,37 @@ public class DanhSachKetQua {
              System.out.println("Loi khi doc File!");
          }
     }
+    public static void timKiemDiem(String hk, float diemSo) {
+   	 try {
+            FileReader fileReader = new FileReader("danhsachketqua");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            String diem, id, tenSV, khoa, kithi;
+
+            while ((diem = bufferedReader.readLine()) != null
+                    && (id = bufferedReader.readLine()) != null
+                    && (tenSV = bufferedReader.readLine()) != null
+                    && (khoa = bufferedReader.readLine()) != null
+                    && (kithi = bufferedReader.readLine()) != null) {
+            	float diemInt = Float.parseFloat(diem);
+               if(hk.equals(kithi) && diemInt < diemSo) {
+               	System.out.println("Diem: " + diemInt);
+               	System.out.println("ID: " + id);
+               	System.out.println("Ten SV: " + tenSV);
+               	System.out.println("Khoa: " + khoa);
+               	System.out.println("Ki thi: " + kithi);
+               	System.out.println("------------------");
+               	recordCount++;
+               }
+            }
+            System.out.print("Tìm được " +recordCount + " sinh viên thi " + hk + " và có số điểm dưới " + diemSo);
+          
+            bufferedReader.close();
+            fileReader.close();
+        } catch (IOException e) {
+            System.out.println("Loi khi doc File!");
+        }
+   }
     
     
     public static void khoaStatistic(String khoaStatistic) {
@@ -149,8 +180,7 @@ public class DanhSachKetQua {
              BufferedReader bufferedReader = new BufferedReader(fileReader);
 
              String diem, id, tenSV, khoa, kithi;
-             int n = 0;
-             while ((diem = bufferedReader.readLine()) != null
+             while ((diem = bufferedReader.readLine()) != null          
                      && (id = bufferedReader.readLine()) != null
                      && (tenSV = bufferedReader.readLine()) != null
                      && (khoa = bufferedReader.readLine()) != null
@@ -196,9 +226,9 @@ public class DanhSachKetQua {
     public static void main(String[] args) {
     	DanhSachKetQua ds = new DanhSachKetQua();
 //    	ds.WriteFile(10,1,"Tu", "IT", "hk1");
-    	ds.ReadFile();
-    	ds.DisplayStatistic();
-
+//    	ds.ReadFile();
+//    	ds.DisplayStatistic();
+    	timKiemDiem("hk1", 8);
 //    	khoaStatistic("IT");
 //    	hkStatistic("hk1");
     	

@@ -62,7 +62,6 @@ public class DanhSachGiaoVien implements File, DuyetDS {
 	@Override
 	public void sapXep() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -76,11 +75,12 @@ public class DanhSachGiaoVien implements File, DuyetDS {
 
 	@Override
 	public boolean xoaPT(int x) {
+		if(x < n) {
+			return false;
+		}
 		if (x > n)
 			return false;
 		n--;
-		if (x > n)
-			return true;
 		for (int i = x; i < n; i++) {
 			gv[i] = gv[i + 1];
 		}
@@ -294,7 +294,7 @@ public class DanhSachGiaoVien implements File, DuyetDS {
 		String[] facultyArray = new String[gv.length];
 		int m = 0;
 		for (int i = 0; i < n; i++) {
-			boolean found = false;
+			boolean found = false; 
 			for (int j = 0; j < m; j++) {
 				if (gv[i].getFaculty().equals(facultyArray[j])) {
 					found = true;
@@ -332,10 +332,10 @@ public class DanhSachGiaoVien implements File, DuyetDS {
 			for (int j = 0; j < m; j++) {
 				if (gv[i].getFaculty().equals(facultyArray[j])) {
 					found = true;
-					break;
+					break;  
 				}
 			}
-			if (!found) {
+			if (!found) {  
 				facultyArray[m] = gv[i].getFaculty();
 				m++;
 			}
@@ -459,13 +459,5 @@ public class DanhSachGiaoVien implements File, DuyetDS {
 			System.out.println("\n");
 			System.out.println("-------------------------------------------------------------------------");
 		}
-	}
-	
-
-	public static void main(String[] args) {
-		DanhSachGiaoVien dsgv = new DanhSachGiaoVien();
-		dsgv.docFile("danhsachgiaovien.txt");
-		dsgv.statistics();
-	}
-
+	}  
 }

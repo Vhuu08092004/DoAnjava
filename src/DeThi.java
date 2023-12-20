@@ -18,7 +18,7 @@ public class DeThi extends HocPhan{
     };
 
     public DeThi(String maDeThi, String tenMonThi, int thoiGian, int soCau, int maHocPhan, String tenHocPhan, int tinChi , int Index[]) {
-        super(maHocPhan,tenHocPhan,tinChi);
+        super();
         this.maDeThi = maDeThi;
         this.tenMonThi = tenMonThi;
         this.thoiGian = thoiGian;

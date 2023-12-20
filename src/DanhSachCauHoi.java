@@ -48,33 +48,25 @@ public class DanhSachCauHoi implements DuyetDS , File{
 	public void docFile(String nameFile) {
 		try (FileReader file = new FileReader(nameFile);
 				BufferedReader buffer = new BufferedReader(file)) {
+			n = 0;
+			ch = new CauHoi[1]; 
 	
-			n = 0; // Assuming n is a variable to keep track of the number of questions
-			ch = new CauHoi[1]; // Assuming ch is an array to store CauHoi objects
+			String[] data = new String[7]; 
 	
-			String[] data = new String[7]; // Array to store data for each question
-	
-			String line = buffer.readLine(); // Read the first line (assuming it's not used)
+			String line = buffer.readLine(); 
 	
 			while (true) {
-				data[0] = buffer.readLine(); // Read the question text
-				//System.out.println(data[0]); // Print the question text
-	
+				data[0] = buffer.readLine(); 
 				if (data[0] == null)
-					break; // Exit the loop if there is no more data
-	
-				n++; // Increment the number of questions
-				ch = Arrays.copyOf(ch, n); // Resize the array to accommodate the new question
-	
-				// Read data for the question (assuming there are 6 more lines of data)
+					break; 
+				n++; 
+				ch = Arrays.copyOf(ch, n); 
 				data[1] = buffer.readLine();
 				data[2] = buffer.readLine();
 				data[3] = buffer.readLine();
 				data[4] = buffer.readLine();
 				data[5] = buffer.readLine();
 				data[6] = buffer.readLine();
-	
-				// Create a new CauHoi object and store it in the array
 				ch[n - 1] = new CauHoi(data[0], data[1], data[2], data[3], data[4], data[5], data[6]);
 			}
 	
@@ -135,7 +127,6 @@ public class DanhSachCauHoi implements DuyetDS , File{
 	@Override
 	public void sapXep() {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void themPT() {
@@ -143,7 +134,6 @@ public class DanhSachCauHoi implements DuyetDS , File{
 		ch = Arrays.copyOf(ch, n);
 		ch[n - 1] = new CauHoi();
 		ch[n - 1].nhap();
-		
 	}
 	@Override
 	public boolean xoaPT(int x) {
@@ -246,14 +236,5 @@ public class DanhSachCauHoi implements DuyetDS , File{
 		System.out.println("Câu Hỏi Không Có Trong Danh Sách");
 		return;
 	}
-	
-	public static void main(String[] args) {
-		DanhSachCauHoi dsch = new DanhSachCauHoi();
-		dsch.ghiFile("monhoc.txt");
-	}
-	
-	
-	
-	
-	
+		
 }
